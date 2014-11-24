@@ -1,0 +1,22 @@
+{
+  "name": "braintree-angular",
+  "version": "1.0.0",
+  "homepage": "https://github.com/jeffcarp/braintree-angular",
+  "authors": [
+    "Braintree <code@getbraintree.com>"
+  ],
+  "description": "Use Braintree in your Angular app",
+  "main": "index.js",
+  "keywords": [
+    "braintree",
+    "angular"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
