@@ -1,0 +1,26 @@
+{
+  "name": "braintree-angular",
+  "version": "1.0.0",
+  "description": "Use Braintree in your Angular app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jeffcarp/braintree-angular.git"
+  },
+  "keywords": [
+    "angular",
+    "braintree"
+  ],
+  "author": "Braintree",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jeffcarp/braintree-angular/issues"
+  },
+  "homepage": "https://github.com/jeffcarp/braintree-angular",
+  "dependencies": {
+    "braintree-web": "^2.3.3"
+  }
+}
