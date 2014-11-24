@@ -1,4 +1,8 @@
 braintree-angular
 =================
 
-Use Braintree in your Angular app
+A module for using [braintree-web](https://github.com/braintree/braintree-web) in your Angular app.
+
+Currently supported integrations:
+
+- None. There are no currently supported integrations.
