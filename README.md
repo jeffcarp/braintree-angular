@@ -13,7 +13,47 @@ A module for using [braintree-web](https://github.com/braintree/braintree-web) i
 # bower install braintree-web # not just yet
 ```
 
+## Setup
+
+For all integrations, first declare a `clientTokenURL` constant to tell Braintree where to fetch your client token.
+
+```
+var yourApp = angular.module('yourApp', [])
+  .constant('clientTokenURL', '/path-or-url-to-your-client-token');
+```
+
+Client tokens are generated with your Braintree server library. Here are guides on how to [set up the server library](https://developers.braintreepayments.com/sdk/server/setup) and how to [generate a client token](https://developers.braintreepayments.com/sdk/overview/generate-client-token).
+
 ## Currently supported integrations:
+
+### Dropin
+
+```html
+<form action="/buy-something" method="post">
+  <h1>Buy some things</h1>
+  <div id="credit-card">
+  </div>
+
+  <input
+    type="submit"
+    value="buy for $14"
+    />
+
+</form>
+```
+
+```javascript
+angular.module('example', ['braintree-angular'])
+  .constant('clientTokenPath', '/client-token')
+  .controller('testCtrl', ['$scope', '$braintree', function($scope, $braintree) {
+    console.log('testCtrl $braintree', $braintree);
+
+    $braintree.setupDropin({
+      container: 'credit-card'
+    });
+
+  }]);
+```
 
 ### Advanced
 
