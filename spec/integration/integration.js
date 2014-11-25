@@ -1,7 +1,6 @@
-describe("integration", function() {
+describe("braintree service", function() {
 
-  it("successfully injects $braintree into a controller", function(done) {
-
+  it("injects 'braintree' into a controller", function(done) {
     var angDiv = document.createElement('div');
     angDiv.innerHTML = '<div ng-controller="testCtrl"></div>';
     document.body.appendChild(angDiv);
@@ -9,6 +8,7 @@ describe("integration", function() {
     var controllerRan = false;
 
     angular.module('testApp', ['braintree-angular'])
+      .constant('clientTokenPath', 'http://0.0.0.0:3001/client-token')
       .controller('testCtrl', ['$scope', '$braintree', function($scope, $braintree) {
         controllerRan = true;
 
@@ -16,12 +16,15 @@ describe("integration", function() {
         expect($braintree.api).toBeDefined();
         expect($braintree.dropin).toBeDefined();
         expect($braintree.Form).toBeDefined();
-      }]);
 
+        done();
+      }]);
     angular.bootstrap(document, ['testApp']);
 
     expect(controllerRan).toBe(true);
-
-    done();
   });
+
+  it("errors out if the url is bogus and it can't fetch a client token");
+
+  it("exposes the base braintree object");
 });

@@ -1,0 +1,29 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/home/vagrant/.nvm/v0.10.33/bin/node',
+1 verbose cli   '/home/vagrant/.nvm/v0.10.33/bin/npm',
+1 verbose cli   'run',
+1 verbose cli   'unit' ]
+2 info using npm@1.4.28
+3 info using node@v0.10.33
+4 verbose run-script [ 'preunit', 'unit', 'postunit' ]
+5 info preunit braintree-angular@2.3.3
+6 info unit braintree-angular@2.3.3
+7 verbose unsafe-perm in lifecycle true
+8 info braintree-angular@2.3.3 Failed to exec unit script
+9 error braintree-angular@2.3.3 unit: `mocha spec/unit`
+9 error Exit status 8
+10 error Failed at the braintree-angular@2.3.3 unit script.
+10 error This is most likely a problem with the braintree-angular package,
+10 error not with npm itself.
+10 error Tell the author that this fails on your system:
+10 error     mocha spec/unit
+10 error You can get their info via:
+10 error     npm owner ls braintree-angular
+10 error There is likely additional logging output above.
+11 error System Linux 3.2.0-4-amd64
+12 error command "/home/vagrant/.nvm/v0.10.33/bin/node" "/home/vagrant/.nvm/v0.10.33/bin/npm" "run" "unit"
+13 error cwd /home/vagrant/oss/braintree-angular
+14 error node -v v0.10.33
+15 error npm -v 1.4.28
+16 error code ELIFECYCLE
+17 verbose exit [ 1, true ]

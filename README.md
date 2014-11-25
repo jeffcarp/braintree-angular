@@ -46,7 +46,6 @@ Client tokens are generated with your Braintree server library. Here are guides 
 angular.module('example', ['braintree-angular'])
   .constant('clientTokenPath', '/client-token')
   .controller('testCtrl', ['$scope', '$braintree', function($scope, $braintree) {
-    console.log('testCtrl $braintree', $braintree);
 
     $braintree.setupDropin({
       container: 'credit-card'

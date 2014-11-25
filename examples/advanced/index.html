@@ -1,0 +1,24 @@
+<html>
+  <head>
+  </head>
+  <body>
+    <h1>yeah</h1>
+
+    <div ng-app="example">
+      <div ng-controller="testCtrl">
+      </div>
+    </div>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.3/angular.min.js"></script>
+    <script src="/dist/braintree-angular.js"></script>
+    <script>
+
+    angular.module('example', ['braintree-angular'])
+      .constant('clientTokenPath', '/examples/client-token.txt')
+      .controller('testCtrl', ['$scope', '$braintree', function($scope, $braintree) {
+        // TODO: Begin using $braintree api .Client
+      }]);
+
+    </script>
+  </body>
+</html>

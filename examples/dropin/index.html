@@ -1,0 +1,43 @@
+<html>
+  <head>
+  </head>
+  <body>
+    <h1>yeah</h1>
+
+    <div ng-app="example">
+
+      <div ng-controller="testCtrl">
+
+        <form action="/buy-something" method="post">
+          <h1>Buy some things</h1>
+          <div id="credit-card">
+          </div>
+
+          <input
+            type="submit"
+            value="buy for $14"
+            />
+
+        </form>
+
+      </div>
+
+    </div>
+
+    <script src="/angular.js"></script>
+    <script src="/braintree-angular.js"></script>
+    <script>
+
+    angular.module('example', ['braintree-angular'])
+      .constant('clientTokenPath', '/client-token')
+      .controller('testCtrl', ['$scope', '$braintree', function($scope, $braintree) {
+
+        $braintree.setupDropin({
+          container: 'credit-card'
+        });
+
+      }]);
+
+    </script>
+  </body>
+</html>

@@ -17,7 +17,7 @@ module.exports = function(config) {
     files: [
       'node_modules/angular/angular.js',
       'dist/braintree-angular.js',
-      'spec/**/*.js'
+      'spec/integration/**/*.js'
     ],
 
 
