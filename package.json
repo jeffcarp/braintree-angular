@@ -4,7 +4,7 @@
   "description": "Use Braintree in your Angular app",
   "main": "index.js",
   "scripts": {
-    "test": "npm run integration",
+    "test": "node spec/support/runner.js",
     "build": "browserify index.js > dist/braintree-angular.js",
     "integration": "npm run build && karma start --single-run"
   },

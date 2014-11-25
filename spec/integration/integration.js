@@ -1,6 +1,6 @@
 describe("braintree service", function() {
 
-  it("injects 'braintree' into a controller", function(done) {
+  it("injects '$braintree' into a controller", function(done) {
     var angDiv = document.createElement('div');
     angDiv.innerHTML = '<div ng-controller="testCtrl"></div>';
     document.body.appendChild(angDiv);
@@ -16,6 +16,7 @@ describe("braintree service", function() {
         expect($braintree.api).toBeDefined();
         expect($braintree.dropin).toBeDefined();
         expect($braintree.Form).toBeDefined();
+        expect($braintree.setup).toBeDefined();
 
         done();
       }]);
@@ -24,7 +25,7 @@ describe("braintree service", function() {
     expect(controllerRan).toBe(true);
   });
 
-  it("errors out if the url is bogus and it can't fetch a client token");
+  // Need to figure out how to erase state in-between tests...
 
-  it("exposes the base braintree object");
+  it("errors out if the url is bogus and it can't fetch a client token");
 });
