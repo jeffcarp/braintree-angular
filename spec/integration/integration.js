@@ -1,15 +1,17 @@
+// Need to figure out how to erase state in-between tests...
+
 describe("braintree service", function() {
 
   it("injects '$braintree' into a controller", function(done) {
     var angDiv = document.createElement('div');
-    angDiv.innerHTML = '<div ng-controller="testCtrl"></div>';
+    angDiv.setAttribute('ng-controller', 'testCtrl');
     document.body.appendChild(angDiv);
 
     var controllerRan = false;
 
-    angular.module('testApp', ['braintree-angular'])
+    angular.module('integrationApp', ['braintree-angular'])
       .constant('clientTokenPath', 'http://0.0.0.0:3001/client-token')
-      .controller('testCtrl', ['$scope', '$braintree', function($scope, $braintree) {
+      .controller('testCtrl', ['$braintree', function($braintree) {
         controllerRan = true;
 
         expect($braintree).toBeDefined();
@@ -20,12 +22,11 @@ describe("braintree service", function() {
 
         done();
       }]);
-    angular.bootstrap(document, ['testApp']);
+
+    angular.bootstrap(angDiv, ['integrationApp']);
 
     expect(controllerRan).toBe(true);
   });
 
-  // Need to figure out how to erase state in-between tests...
-
-  it("errors out if the url is bogus and it can't fetch a client token");
+  //it("errors out if the url is bogus and it can't fetch a client token");
 });
