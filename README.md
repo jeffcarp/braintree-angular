@@ -6,11 +6,11 @@ A module for using [braintree-web](https://github.com/braintree/braintree-web) i
 ## Install
 
 ```bash
-# npm install braintree-web # not just yet
+# npm install braintree-angular # not just yet
 ```
 
 ```bash
-# bower install braintree-web # not just yet
+# bower install braintree-angular # not just yet
 ```
 
 ## Setup
