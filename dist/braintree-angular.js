@@ -1,13 +1,8 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 var braintree = require('braintree-web');
 
-function braintreeService(clientTokenPath, $http) {
+function braintreeFactory(clientTokenPath, $http) {
   var $braintree = {};
-
-  if (!clientTokenPath) {
-    var msg = 'braintreeService needs module.constant("clientTokenPath", "/path") to be defined';
-    throw new Error(msg);
-  }
 
   $braintree.clientToken = null;
 
@@ -32,22 +27,22 @@ function braintreeService(clientTokenPath, $http) {
   return $braintree;
 }
 
-var fullBraintreeService = [
+var fullBraintreeFactory = [
   'clientTokenPath',
   '$http',
-  braintreeService
+  braintreeFactory
 ];
 
 module.exports = {
-  braintreeService: braintreeService,
-  fullBraintreeService: fullBraintreeService
+  braintreeFactory: braintreeFactory,
+  fullBraintreeFactory: fullBraintreeFactory
 };
 
 },{"braintree-web":3}],2:[function(require,module,exports){
 var braintreeFactory = require('./braintree-factory');
 var braingular = window.angular.module('braintree-angular', []);
 
-braingular.factory('$braintree', braintreeFactory.fullBraintreeService);
+braingular.factory('$braintree', braintreeFactory.fullBraintreeFactory);
 
 module.exports = braingular;
 

@@ -1,12 +1,7 @@
 var braintree = require('braintree-web');
 
-function braintreeService(clientTokenPath, $http) {
+function braintreeFactory(clientTokenPath, $http) {
   var $braintree = {};
-
-  if (!clientTokenPath) {
-    var msg = 'braintreeService needs module.constant("clientTokenPath", "/path") to be defined';
-    throw new Error(msg);
-  }
 
   $braintree.clientToken = null;
 
@@ -31,13 +26,13 @@ function braintreeService(clientTokenPath, $http) {
   return $braintree;
 }
 
-var fullBraintreeService = [
+var fullBraintreeFactory = [
   'clientTokenPath',
   '$http',
-  braintreeService
+  braintreeFactory
 ];
 
 module.exports = {
-  braintreeService: braintreeService,
-  fullBraintreeService: fullBraintreeService
+  braintreeFactory: braintreeFactory,
+  fullBraintreeFactory: fullBraintreeFactory
 };
