@@ -17,7 +17,7 @@ bower install braintree-angular
 
 For all integrations, first declare a `clientTokenURL` constant to tell Braintree where to fetch your client token.
 
-```
+```javascript
 var yourApp = angular.module('yourApp', [])
   .constant('clientTokenURL', '/path-or-url-to-your-client-token');
 ```
