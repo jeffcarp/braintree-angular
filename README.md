@@ -54,6 +54,15 @@ angular.module('example', ['braintree-angular'])
   }]);
 ```
 
+Run the example:
+
+```bash
+cd examples/dropin
+# fill in your sandbox credentials in server.js
+node server
+# navigate to http://localhost:8000
+```
+
 ### Advanced
 
 ```html
