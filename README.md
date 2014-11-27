@@ -3,6 +3,8 @@ braintree-angular
 
 A module for using [braintree-web](https://github.com/braintree/braintree-web) in your Angular app.
 
+> Small disclaimer: `braintree-angular` is not an official Braintree module. It is meant only to be a thin layer to make working with `braintree-web` in Angular feel more natural.
+
 ## Install
 
 ```bash
