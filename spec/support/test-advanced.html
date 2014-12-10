@@ -1,0 +1,36 @@
+<html>
+  <head>
+    <title>Test Drop-in</title>
+  </head>
+  <body ng-app="advancedApp">
+
+    <div ng-controller="testCtrl">
+    </div>
+
+    <script src="angular.js"></script>
+    <script src="braintree-angular.js"></script>
+    <script>
+      window.braintreeApiInitialized = false;
+
+      angular.module('advancedApp', ['braintree-angular'])
+        .constant('clientTokenPath', 'http://localhost:3001/client-token')
+        .controller('testCtrl', ['$braintree', function($braintree) {
+
+          $braintree.getClientToken()
+            .success(function(token) {
+
+              var client = new $braintree.api.Client({
+                clientToken: token
+              });
+
+              if (client.tokenizeCard) {
+                window.braintreeApiInitialized = true;
+              }
+
+            });
+
+        }]);
+    </script>
+
+  </body>
+</html>

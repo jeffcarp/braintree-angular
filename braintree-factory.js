@@ -13,6 +13,10 @@ function braintreeFactory(clientTokenPath, $http) {
     return $http.get(clientTokenPath);
   }
 
+  $braintree.getClientToken = function() {
+    return getClientToken();
+  };
+
   $braintree.setupDropin = function(options) {
     getClientToken()
       .success(function(token) {

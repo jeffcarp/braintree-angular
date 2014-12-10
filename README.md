@@ -95,6 +95,7 @@ node server
 
 ```javascript
 angular.module('yourApp', [])
+  .constant('clientTokenPath', '/client-token')
   .controller('yourCtrl', ['$scope', '$braintree', function($scope, $braintree) {
 
     var client;
@@ -104,17 +105,17 @@ angular.module('yourApp', [])
     };
 
     var startup = function() {
-      // A fake function simulating the fetching of a clientToken
-      fetchClientToken(function(err, clientToken) {
+      $braintree.getClientToken().success(function(token) {
         client = new $braintree.api.Client({
-          clientToken: clientToken
+          clientToken: token
         });
       });
     }
 
     $scope.payButtonClicked = function() {
 
-      // Validate $scope.creditCard
+      // - Validate $scope.creditCard
+      // - Make sure client is ready to use
 
       client.tokenizeCard({
         number: $scope.creditCard.number,

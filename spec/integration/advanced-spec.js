@@ -4,7 +4,7 @@ var app = require('../support/app');
 
 var baseURL = 'http://localhost:3001';
 
-describe('Drop-in Integration', function() {
+describe('Advanced Integration', function() {
 
   var ph;
   var server;
@@ -19,19 +19,17 @@ describe('Drop-in Integration', function() {
     });
   });
 
-  it('adds elements to the page on setup', function(done) {
+  it('initializes API client', function(done) {
     ph.createPage(function(page) {
 
       page.onConsoleMessage(function(msg) {
         console.log('page console -> ', msg);
       });
 
-      page.open(baseURL+'/test-dropin.html', function(status) {
-        page.evaluate(function() { return document.documentElement.innerHTML; }, function(result) {
+      page.open(baseURL+'/test-advanced.html', function(status) {
+        page.evaluate(function() { return window.braintreeApiInitialized; }, function(result) {
 
-          assert(result.indexOf('iframe') !== -1, 'adds an iframe to the page');
-          var input = '<input type="hidden" name="payment_method_nonce">';
-          assert(result.indexOf(input) !== -1, 'adds nonce input');
+          assert(result, 'Braintree API client was initialized');
 
           done();
         });
