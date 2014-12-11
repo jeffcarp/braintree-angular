@@ -1,0 +1,42 @@
+<html>
+  <head>
+  </head>
+  <body>
+    <h1>yeah</h1>
+
+    <div ng-app="example">
+
+      <form ng-controller="checkout">
+        <h1>Buy some things</h1>
+        <braintree-dropin
+          options="dropinOptions"
+          >Loading payment form...</braintree-dropin>
+
+        <input
+          type="submit"
+          value="Buy for $14"
+          />
+      </form>
+
+    </div>
+
+    <script src="/angular.js"></script>
+    <script src="/braintree-angular.js"></script>
+    <script>
+
+    angular.module('example', ['braintree-angular'])
+           .constant('clientTokenPath', '/client-token')
+           .controller('checkout', function($scope) {
+
+             $scope.dropinOptions = {
+               paymentMethodNonceReceived: function(e, nonce) {
+                 e.preventDefault();
+                 console.log(nonce); // yay
+               }
+             };
+
+           });
+
+    </script>
+  </body>
+</html>

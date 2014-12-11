@@ -4,24 +4,20 @@
   </head>
   <body ng-app="dropinApp">
 
-    <div ng-controller="testCtrl">
-      <form>
-        <div id="dropin-container"></div>
-      </form>
-    </div>
+    <form>
+      <braintree-dropin></braintree-dropin>
+
+      <input
+        type="submit"
+        value="Pay $14"
+        />
+    </form>
 
     <script src="angular.js"></script>
     <script src="braintree-angular.js"></script>
     <script>
       angular.module('dropinApp', ['braintree-angular'])
-        .constant('clientTokenPath', 'http://localhost:3001/client-token')
-        .controller('testCtrl', ['$braintree', function($braintree) {
-
-          $braintree.setupDropin({
-            container: 'dropin-container'
-          });
-
-        }]);
+        .constant('clientTokenPath', '/client-token');
     </script>
 
   </body>

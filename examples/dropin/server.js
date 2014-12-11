@@ -6,9 +6,9 @@ var app = express();
 
 var gateway = braintree.connect({
   environment: braintree.Environment.Sandbox,
-  merchantId: "your merchant id",
-  publicKey: "your public key",
-  privateKey: "your private key"
+  merchantId: "MERCHANT_ID_GOES_HERE",
+  publicKey: "PUBLIC_KEY_GOES_HERE",
+  privateKey: "PRIVATE_HERE_GOES____YOU_GUESSED_IT___HERE"
 });
 
 var angularStr = fs.readFileSync('../../node_modules/angular/angular.js', 'utf8');
