@@ -37,12 +37,12 @@ Client tokens are generated with your Braintree server library. Here are guides 
 ```html
 <form action="/buy-something" method="post">
   <h1>Buy some things</h1>
-  <div id="credit-card">
-  </div>
+
+  <braintree-dropin></braintree-dropin>
 
   <input
     type="submit"
-    value="buy for $14"
+    value="Buy for $14"
     />
 
 </form>
@@ -50,23 +50,16 @@ Client tokens are generated with your Braintree server library. Here are guides 
 
 ```javascript
 angular.module('example', ['braintree-angular'])
-  .constant('clientTokenPath', '/client-token')
-  .controller('testCtrl', ['$scope', '$braintree', function($scope, $braintree) {
-
-    $braintree.setupDropin({
-      container: 'credit-card'
-    });
-
-  }]);
+  .constant('clientTokenPath', '/client-token');
 ```
 
 Run the example:
 
 ```bash
 cd examples/dropin
-# fill in your sandbox credentials in server.js
+# - fill in your sandbox credentials in server.js
 node server
-# navigate to http://localhost:8000
+# - navigate to http://localhost:8000
 ```
 
 ### Advanced
@@ -122,7 +115,7 @@ angular.module('yourApp', [])
         expirationDate: $scope.creditCard.expirationDate
       }, function (err, nonce) {
 
-        // Send nonce to your server (e.g. to make a transaction)
+        // - Send nonce to your server (e.g. to make a transaction)
 
       });
     };
