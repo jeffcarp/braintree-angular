@@ -21,11 +21,11 @@ bower install braintree-angular
 
 ## Setup
 
-For all integrations, first declare a `clientTokenURL` constant to tell Braintree where to fetch your client token.
+For all integrations, first declare a `clientTokenPath` constant to tell Braintree where to fetch your client token.
 
 ```javascript
 var yourApp = angular.module('yourApp', [])
-  .constant('clientTokenURL', '/path-or-url-to-your-client-token');
+  .constant('clientTokenPath', '/path-or-url-to-your-client-token');
 ```
 
 Client tokens are generated with your Braintree server library. Here are guides on how to [set up the server library](https://developers.braintreepayments.com/sdk/server/setup) and how to [generate a client token](https://developers.braintreepayments.com/sdk/overview/generate-client-token).
