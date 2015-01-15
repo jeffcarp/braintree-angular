@@ -24,7 +24,7 @@ bower install braintree-angular
 For all integrations, first declare a `clientTokenPath` constant to tell Braintree where to fetch your client token.
 
 ```javascript
-var yourApp = angular.module('yourApp', [])
+var yourApp = angular.module('yourApp', ['braintree-angular'])
   .constant('clientTokenPath', '/path-or-url-to-your-client-token');
 ```
 
@@ -87,7 +87,7 @@ node server
 ```
 
 ```javascript
-angular.module('yourApp', [])
+angular.module('yourApp', ['braintree-angular'])
   .constant('clientTokenPath', '/client-token')
   .controller('yourCtrl', ['$scope', '$braintree', function($scope, $braintree) {
 
