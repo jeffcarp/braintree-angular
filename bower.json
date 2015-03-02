@@ -1,6 +1,6 @@
 {
   "name": "braintree-angular",
-  "version": "1.1.2",
+  "version": "1.2.0",
   "homepage": "https://github.com/jeffcarp/braintree-angular",
   "authors": [
     "Braintree <code@getbraintree.com>"
