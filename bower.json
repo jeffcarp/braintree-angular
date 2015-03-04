@@ -1,12 +1,12 @@
 {
   "name": "braintree-angular",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "homepage": "https://github.com/jeffcarp/braintree-angular",
   "authors": [
     "Braintree <code@getbraintree.com>"
   ],
   "description": "Use Braintree in your Angular app",
-  "main": "index.js",
+  "main": "dist/braintree-angular.js",
   "keywords": [
     "braintree",
     "angular"
@@ -15,5 +15,8 @@
   "ignore": [
     "**/.*",
     "!dist/braintree-angular.js"
-  ]
+  ],
+  "dependencies": {
+    "braintree-web": "2.5.3"
+  }
 }
