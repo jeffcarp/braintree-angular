@@ -1,6 +1,7 @@
 var express = require('express');
 var fs = require('fs');
 var app = express();
+var clientToken = require('./client-token');
 
 app.use(express.static(__dirname));
 
@@ -15,13 +16,7 @@ app.get('/angular.js', function(req, res) {
 });
 
 app.get('/client-token', function(req, res) {
-  var fakeClientToken = JSON.stringify({
-    fake: true,
-    authUrl: '',
-    clientApiUrl: ''
-  });
-  fakeClientToken = new Buffer(fakeClientToken).toString('base64');
-  res.send(fakeClientToken);
+  res.send(clientToken);
 });
 
 module.exports = app;
