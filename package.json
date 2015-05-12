@@ -1,6 +1,6 @@
 {
   "name": "braintree-angular",
-  "version": "1.2.5",
+  "version": "1.2.6",
   "description": "Use Braintree in your Angular app",
   "main": "index.js",
   "scripts": {
