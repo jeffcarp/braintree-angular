@@ -2,6 +2,7 @@
 
 - `npm test`
 - `npm run build`
+- If any changes, commit built file separately
 - Bump version of `bower.json`
 - Bump version of `package.json`
 - `git add bower.json package.json`
