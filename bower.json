@@ -6,7 +6,7 @@
     "Braintree <code@getbraintree.com>"
   ],
   "description": "Use Braintree in your Angular app",
-  "main": "index.js",
+  "main": "dist/braintree-angular.js",
   "keywords": [
     "braintree",
     "angular"

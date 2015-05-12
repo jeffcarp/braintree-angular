@@ -3,6 +3,7 @@
   "version": "1.2.1",
   "description": "Use Braintree in your Angular app",
   "main": "index.js",
+  "browser": "dist/braintree-angular.js",
   "scripts": {
     "test": "npm run build && mocha spec/integration",
     "build": "browserify index.js > dist/braintree-angular.js"
