@@ -32,7 +32,7 @@ Client tokens are generated with your Braintree server library. Here are guides 
 
 ## Currently supported integrations:
 
-### Dropin
+### Drop-in UI
 
 ```html
 <form action="/buy-something" method="post">
