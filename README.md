@@ -19,6 +19,15 @@ npm install braintree-angular
 bower install braintree-angular
 ```
 
+## Run the example
+
+```sh
+git clone git@github.com:jeffcarp/braintree-angular.git
+cd braintree-angular
+npm run example
+# Open localhost:8000/dropin.html
+```
+
 ## Setup
 
 For all integrations, first declare a `clientTokenPath` constant to tell Braintree where to fetch your client token.

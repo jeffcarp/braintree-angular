@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "npm run build && mocha test/integration",
-    "build": "browserify index.js > dist/braintree-angular.js"
+    "build": "browserify index.js > dist/braintree-angular.js",
+    "example": "node examples/server"
   },
   "repository": {
     "type": "git",

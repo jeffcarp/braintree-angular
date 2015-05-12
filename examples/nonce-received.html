@@ -29,9 +29,9 @@
            .controller('checkout', function($scope) {
 
              $scope.dropinOptions = {
-               paymentMethodNonceReceived: function(e, nonce) {
+               onPaymentMethodReceived: function(payload) {
                  e.preventDefault();
-                 console.log(nonce); // yay
+                 console.log(payload); // yay
                }
              };
 

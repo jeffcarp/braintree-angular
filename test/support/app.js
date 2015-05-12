@@ -1,7 +1,7 @@
 var express = require('express');
 var fs = require('fs');
 var app = express();
-var clientToken = require('./client-token');
+var clientToken = require('../../client-token');
 
 app.use(express.static(__dirname));
 

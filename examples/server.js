@@ -2,17 +2,18 @@ var express = require('express');
 var braintree = require('braintree');
 var fs = require('fs');
 var bodyParser = require('body-parser');
+var dummyClientToken = require('../client-token');
 var app = express();
 
 var gateway = braintree.connect({
   environment: braintree.Environment.Sandbox,
-  merchantId: "MERCHANT_ID_GOES_HERE",
-  publicKey: "PUBLIC_KEY_GOES_HERE",
-  privateKey: "PRIVATE_HERE_GOES____YOU_GUESSED_IT___HERE"
+  merchantId: "YOUR_MERCHANT_ID",
+  publicKey: "YOUR_PUBLIC_KEY",
+  privateKey: "YOUR_PRIVATE_KEY"
 });
 
-var angularStr = fs.readFileSync('../../node_modules/angular/angular.js', 'utf8');
-var braintreeAngularStr = fs.readFileSync('../../dist/braintree-angular.js', 'utf8');
+var angularStr = fs.readFileSync(__dirname+'/../node_modules/angular/angular.js', 'utf8');
+var braintreeAngularStr = fs.readFileSync(__dirname+'/../dist/braintree-angular.js', 'utf8');
 
 app.use(bodyParser.urlencoded({
   extended: true
@@ -20,8 +21,19 @@ app.use(bodyParser.urlencoded({
 
 app.get('/client-token', function(req, res) {
   gateway.clientToken.generate({}, function (err, response) {
-    var clientToken = response.clientToken
-    res.send(clientToken);
+    if (err || !response || !response.clientToken) {
+      if (err.name === 'authenticationError') {
+        console.error('Please fill in examples/server.js with your credentials from Account->API Keys in your Sandbox dashboard: https://sandbox.braintreegateway.com/');
+        console.error('Using a dummy client token... this may or may not work');
+        res.send(dummyClientToken);
+      } else {
+        console.error(err);
+        res.send(err);
+      }
+    } else {
+      var clientToken = response.clientToken
+      res.send(clientToken);
+    }
   });
 });
 
