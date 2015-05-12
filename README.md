@@ -24,6 +24,7 @@ bower install braintree-angular
 ```sh
 git clone git@github.com:jeffcarp/braintree-angular.git
 cd braintree-angular
+npm install
 npm run example
 # Open localhost:8000/dropin.html
 ```
