@@ -134,4 +134,4 @@ angular.module('yourApp', ['braintree-angular'])
   }]);
 ```
 
-The full set of options you can pass to `client.tokenizeCard` are available [in the Braintree docs](https://developers.braintreepayments.com/javascript/sdk/client/credit-cards#options). Please be advised that using the advanced integration method widens your [PCI compliance](http://payments-reference.org/pci-compliance/) scope from [SAQ A](http://payments-reference.org/pci-compliance/saqs/#saq-a) to [SAQ A-EP](http://payments-reference.org/pci-compliance/saqs/#saq-a-ep).
+The full set of options you can pass to `client.tokenizeCard` are available [in the Braintree docs](https://developers.braintreepayments.com/javascript/sdk/client/credit-cards#options). Please be advised that using the advanced integration method widens your [PCI compliance](http://payments-reference.org/pci-compliance/) scope from [SAQ A](https://payments-reference.org/payment-cards/pci-compliance/saqs/#saq-a) to [SAQ A-EP](https://payments-reference.org/payment-cards/pci-compliance/saqs/#saq-a-ep).
