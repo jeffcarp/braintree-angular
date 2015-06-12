@@ -9,12 +9,12 @@ braingular.directive('braintreeDropin', function() {
       options: '='
     },
     template: '<div id="bt-dropin"></div>',
-    controller: function($scope, $braintree) {
+    controller: ['$scope', '$braintree', function($scope, $braintree) {
       var options = $scope.options || {};
       options.container = 'bt-dropin';
 
       $braintree.setupDropin(options);
-    }
+    }]
   }
 });
 
