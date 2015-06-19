@@ -2,21 +2,15 @@
   <head>
   </head>
   <body>
-    <h1>Drop-In Callback Example</h1>
+    <h1>PayPal Standalone Callback Example</h1>
 
-    <div ng-app="example">
+    <div ng-app="example" ng-controller="checkout">
 
-      <form ng-controller="checkout">
-        <h1>Buy some things</h1>
-        <braintree-dropin
-          options="dropinOptions"
-          >Loading payment form...</braintree-dropin>
+      <braintree-paypal
+        options="paypalOptions"
+        >Loading PayPal button...</braintree-paypal>
 
-        <input
-          type="submit"
-          value="Buy for $14"
-          />
-      </form>
+      <p>(After PayPal flow check for payment method nonce in console)</p>
 
     </div>
 
@@ -28,9 +22,9 @@
            .constant('clientTokenPath', '/client-token')
            .controller('checkout', function($scope) {
 
-             $scope.dropinOptions = {
+             $scope.paypalOptions = {
                onPaymentMethodReceived: function(payload) {
-                 console.log(payload); // yay
+                 console.log('Yay, payload with nonce:', payload);
                }
              };
 

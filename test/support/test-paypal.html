@@ -1,0 +1,24 @@
+<html>
+  <head>
+    <title>Test PayPal</title>
+  </head>
+  <body ng-app="paypalApp">
+
+    <form>
+      <braintree-paypal></braintree-paypal>
+
+      <input
+        type="submit"
+        value="Pay $14"
+        />
+    </form>
+
+    <script src="angular.js"></script>
+    <script src="braintree-angular.js"></script>
+    <script>
+      angular.module('paypalApp', ['braintree-angular'])
+        .constant('clientTokenPath', '/client-token');
+    </script>
+
+  </body>
+</html>

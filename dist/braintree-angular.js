@@ -28,6 +28,16 @@ function braintreeFactory(clientTokenPath, $http) {
       });
   };
 
+  $braintree.setupPayPal = function(options) {
+    getClientToken()
+      .success(function(token) {
+        braintree.setup(token, 'paypal', options);
+      })
+      .error(function(data, status) {
+        console.error('error fetching client token at '+clientTokenPath, data, status);
+      });
+  };
+
   return $braintree;
 }
 
@@ -60,6 +70,21 @@ braingular.directive('braintreeDropin', function() {
 
       $braintree.setupDropin(options);
     }]
+  }
+});
+
+braingular.directive('braintreePaypal', function() {
+  return {
+    scope: {
+      options: '='
+    },
+    template: '<div id="bt-paypal"></div>',
+    controller: function($scope, $braintree) {
+      var options = $scope.options || {};
+      options.container = 'bt-paypal';
+
+      $braintree.setupPayPal(options);
+    }
   }
 });
 

@@ -63,13 +63,10 @@ angular.module('example', ['braintree-angular'])
   .constant('clientTokenPath', '/client-token');
 ```
 
-Run the example:
+## PayPal Standalone Button
 
-```bash
-cd examples/dropin
-# - fill in your sandbox credentials in server.js
-node server
-# - navigate to http://localhost:8000
+```html
+<braintree-paypal></braintree-paypal>
 ```
 
 ### Advanced
