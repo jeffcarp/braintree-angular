@@ -62,6 +62,15 @@ app.get('/braintree-angular.js', function(req, res) {
 app.use(express.static(__dirname));
 
 var port = 8000;
-app.listen(port, function() {
-  console.log('Running on port '+port);
+app.listen(port, '0.0.0.0', function() {
+  console.log('Running at 0.0.0.0:'+port);
+  console.log('Check out these examples:');
+  var files = fs.readdirSync(__dirname)
+    .filter(function(fileName) {
+      return fileName.match(/\.html$/);
+    })
+    .map(function(fileName) {
+      console.log('- http://localhost:'+port+'/'+fileName);
+    });
+
 });

@@ -2,13 +2,14 @@
   <head>
   </head>
   <body>
-    <h1>Drop-In Example</h1>
+    <h1>PayPal Standalone Example</h1>
 
     <div ng-app="example">
 
-      <form action="/buy-something" method="post">
+      <form>
         <h1>Buy some things</h1>
-        <braintree-dropin>Loading payment form...</braintree-dropin>
+
+        <braintree-paypal>Loading PayPal button...</braintree-paypal>
 
         <input
           type="submit"
@@ -21,8 +22,10 @@
     <script src="/angular.js"></script>
     <script src="/braintree-angular.js"></script>
     <script>
-      angular.module('example', ['braintree-angular'])
-             .constant('clientTokenPath', '/client-token');
+
+    angular.module('example', ['braintree-angular'])
+           .constant('clientTokenPath', '/client-token');
+
     </script>
   </body>
 </html>

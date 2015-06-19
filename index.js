@@ -18,4 +18,19 @@ braingular.directive('braintreeDropin', function() {
   }
 });
 
+braingular.directive('braintreePaypal', function() {
+  return {
+    scope: {
+      options: '='
+    },
+    template: '<div id="bt-paypal"></div>',
+    controller: function($scope, $braintree) {
+      var options = $scope.options || {};
+      options.container = 'bt-paypal';
+
+      $braintree.setupPayPal(options);
+    }
+  }
+});
+
 module.exports = braingular;

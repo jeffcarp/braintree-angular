@@ -27,6 +27,16 @@ function braintreeFactory(clientTokenPath, $http) {
       });
   };
 
+  $braintree.setupPayPal = function(options) {
+    getClientToken()
+      .success(function(token) {
+        braintree.setup(token, 'paypal', options);
+      })
+      .error(function(data, status) {
+        console.error('error fetching client token at '+clientTokenPath, data, status);
+      });
+  };
+
   return $braintree;
 }
 
