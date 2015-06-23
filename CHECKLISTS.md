@@ -1,5 +1,7 @@
 # Deploy
 
+- `nvm use`
+- `npm i`
 - `npm test`
 - `npm run build`
 - If any changes, commit built file separately
