@@ -60,6 +60,7 @@ braingular.factory('$braintree', braintreeFactory.fullBraintreeFactory);
 
 braingular.directive('braintreeDropin', function() {
   return {
+    restrict: 'EA',
     scope: {
       options: '='
     },
@@ -75,6 +76,7 @@ braingular.directive('braintreeDropin', function() {
 
 braingular.directive('braintreePaypal', function() {
   return {
+    restrict: 'EA',
     scope: {
       options: '='
     },
