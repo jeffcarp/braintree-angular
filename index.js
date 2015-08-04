@@ -33,7 +33,7 @@ braingular.directive('braintreePaypal', function() {
       $braintree.setupPayPal(options);
       
       $scope.$on('$destroy',function() {
-        $('#braintree-dropin-modal-frame').remove();
+        angular.element(document.getElementById('braintree-dropin-modal-frame')).remove();
         window.Braintree = undefined;
       });
     }
