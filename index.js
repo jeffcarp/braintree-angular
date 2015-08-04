@@ -31,6 +31,11 @@ braingular.directive('braintreePaypal', function() {
       options.container = 'bt-paypal';
 
       $braintree.setupPayPal(options);
+      
+      $scope.$on('$destroy',function() {
+        $('#braintree-dropin-modal-frame').remove();
+        window.Braintree = undefined;
+      });
     }
   }
 });
