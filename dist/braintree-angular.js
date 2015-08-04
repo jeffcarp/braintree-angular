@@ -60,6 +60,7 @@ braingular.factory('$braintree', braintreeFactory.fullBraintreeFactory);
 
 braingular.directive('braintreeDropin', function() {
   return {
+    restrict: 'EA',
     scope: {
       options: '='
     },
@@ -69,12 +70,18 @@ braingular.directive('braintreeDropin', function() {
       options.container = 'bt-dropin';
 
       $braintree.setupDropin(options);
+      
+      $scope.$on('$destroy',function() {
+        angular.element(document.getElementById('braintree-dropin-modal-frame')).remove();
+        window.Braintree = undefined;
+      });
     }]
   }
 });
 
 braingular.directive('braintreePaypal', function() {
   return {
+    restrict: 'EA',
     scope: {
       options: '='
     },

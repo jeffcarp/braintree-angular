@@ -5,6 +5,7 @@ braingular.factory('$braintree', braintreeFactory.fullBraintreeFactory);
 
 braingular.directive('braintreeDropin', function() {
   return {
+    restrict: 'EA',
     scope: {
       options: '='
     },
@@ -20,6 +21,7 @@ braingular.directive('braintreeDropin', function() {
 
 braingular.directive('braintreePaypal', function() {
   return {
+    restrict: 'EA',
     scope: {
       options: '='
     },
@@ -29,6 +31,11 @@ braingular.directive('braintreePaypal', function() {
       options.container = 'bt-paypal';
 
       $braintree.setupPayPal(options);
+      
+      $scope.$on('$destroy',function() {
+        angular.element(document.getElementById('braintree-dropin-modal-frame')).remove();
+        window.Braintree = undefined;
+      });
     }
   }
 });
