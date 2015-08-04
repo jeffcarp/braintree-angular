@@ -70,6 +70,11 @@ braingular.directive('braintreeDropin', function() {
       options.container = 'bt-dropin';
 
       $braintree.setupDropin(options);
+      
+      $scope.$on('$destroy',function() {
+        $('#braintree-dropin-modal-frame').remove();
+        window.Braintree = undefined;
+      });
     }]
   }
 });
