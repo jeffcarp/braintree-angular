@@ -72,7 +72,7 @@ braingular.directive('braintreeDropin', function() {
       $braintree.setupDropin(options);
       
       $scope.$on('$destroy',function() {
-        $('#braintree-dropin-modal-frame').remove();
+        angular.element(document.getElementById('braintree-dropin-modal-frame')).remove();
         window.Braintree = undefined;
       });
     }]
