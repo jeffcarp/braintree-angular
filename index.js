@@ -6,6 +6,7 @@ braingular.factory('$braintree', braintreeFactory.fullBraintreeFactory);
 braingular.directive('braintreeDropin', function() {
   return {
     scope: {
+      restrict: 'AEC',
       options: '='
     },
     template: '<div id="bt-dropin"></div>',
@@ -21,6 +22,7 @@ braingular.directive('braintreeDropin', function() {
 braingular.directive('braintreePaypal', function() {
   return {
     scope: {
+      restrict: 'AEC',
       options: '='
     },
     template: '<div id="bt-paypal"></div>',
