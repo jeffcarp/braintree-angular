@@ -3,36 +3,50 @@ var braingular = window.angular.module('braintree-angular', []);
 
 braingular.factory('$braintree', braintreeFactory.fullBraintreeFactory);
 
-braingular.directive('braintreeDropin', function() {
+braingular.directive('braintreeDropin', function () {
   return {
     restrict: 'AEC',
     scope: {
-      options: '='
+      options: '=',
+      tokenOptions: '=',
+      btToken: '='
     },
     template: '<div id="bt-dropin"></div>',
-    controller: ['$scope', '$braintree', function($scope, $braintree) {
-      var options = $scope.options || {};
+    bindToController: true,
+    controller: ['$braintree', function ($braintree) {
+      var options = this.options || {};
+      var tokenOptions = this.tokenOptions || {};
+      var btToken = this.btToken || null;
+
       options.container = 'bt-dropin';
 
-      $braintree.setupDropin(options);
-    }]
-  }
+      $braintree.setup('dropin', options, tokenOptions, btToken);
+    }],
+    controllerAs: 'btDropinCtrl'
+  };
 });
 
-braingular.directive('braintreePaypal', function() {
+braingular.directive('braintreePaypal', function () {
   return {
     restrict: 'AEC',
     scope: {
-      options: '='
+      options: '=',
+      tokenOptions: '=',
+      btToken: '='
     },
     template: '<div id="bt-paypal"></div>',
-    controller: function($scope, $braintree) {
-      var options = $scope.options || {};
+    bindToController: true,
+    controller: ['$braintree', function ($braintree) {
+      var options = this.options || {};
+      var tokenOptions = this.tokenOptions || {};
+      var btToken = this.btToken || null;
+
       options.container = 'bt-paypal';
 
-      $braintree.setupPayPal(options);
-    }
-  }
+      $braintree.setup('paypal', options, tokenOptions, btToken);
+    }],
+    controllerAs: 'btDropinCtrl'
+  };
 });
 
 module.exports = braingular;
