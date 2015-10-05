@@ -5,36 +5,38 @@ function braintreeFactory(clientTokenPath, $http) {
 
   $braintree.clientToken = null;
 
-  Object.keys(braintree).forEach(function(key) {
+  Object.keys(braintree).forEach(function (key) {
     $braintree[key] = braintree[key];
   });
 
-  function getClientToken() {
-    return $http.get(clientTokenPath);
+  function getClientToken(tokenOptions) {
+    tokenOptions = tokenOptions === undefined ? {} : tokenOptions;
+
+    return $http.get(clientTokenPath, {
+      params: tokenOptions
+    });
   }
 
-  $braintree.getClientToken = function() {
+  $braintree.getClientToken = function () {
     return getClientToken();
   };
 
-  $braintree.setupDropin = function(options) {
-    getClientToken()
-      .success(function(token) {
-        braintree.setup(token, 'dropin', options);
-      })
-      .error(function(data, status) {
-        console.error('error fetching client token at '+clientTokenPath, data, status);
-      });
-  };
+  function setup(token, type, options) {
+    braintree.setup(token, type, options);
+  }
 
-  $braintree.setupPayPal = function(options) {
-    getClientToken()
-      .success(function(token) {
-        braintree.setup(token, 'paypal', options);
-      })
-      .error(function(data, status) {
-        console.error('error fetching client token at '+clientTokenPath, data, status);
-      });
+  $braintree.setup = function (type, options, tokenOptions, btToken) {
+    if (!btToken) {
+      getClientToken(tokenOptions)
+        .success(function (token) {
+          setup(token, type, options);
+        })
+        .error(function (data, status) {
+          console.error('error fetching client token at ' + clientTokenPath, data, status);
+        });
+    } else {
+      setup(btToken, type, options);
+    }
   };
 
   return $braintree;

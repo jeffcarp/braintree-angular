@@ -1,9 +1,5 @@
-braintree-angular
-=================
-
-[![Build Status](http://img.shields.io/travis/jeffcarp/braintree-angular.svg?style=flat)](https://travis-ci.org/jeffcarp/braintree-angular)
-[![npm version](http://img.shields.io/npm/v/braintree-angular.svg?style=flat)](https://www.npmjs.org/package/braintree-angular)
-
+# braintree-angular
+[![Build Status](http://img.shields.io/travis/jeffcarp/braintree-angular.svg?style=flat)](https://travis-ci.org/jeffcarp/braintree-angular) [![npm version](http://img.shields.io/npm/v/braintree-angular.svg?style=flat)](https://www.npmjs.org/package/braintree-angular)
 
 A module for using [braintree-web](https://github.com/braintree/braintree-web) in your Angular app.
 
@@ -30,7 +26,6 @@ npm run example
 ```
 
 ## Setup
-
 For all integrations, first declare a `clientTokenPath` constant to tell Braintree where to fetch your client token.
 
 ```javascript
@@ -41,7 +36,6 @@ var yourApp = angular.module('yourApp', ['braintree-angular'])
 Client tokens are generated with your Braintree server library. Here are guides on how to [set up the server library](https://developers.braintreepayments.com/sdk/server/setup) and how to [generate a client token](https://developers.braintreepayments.com/sdk/overview/generate-client-token).
 
 ## Currently supported integrations:
-
 ### Drop-in UI
 
 ```html
@@ -68,6 +62,20 @@ angular.module('example', ['braintree-angular'])
 ```html
 <braintree-paypal></braintree-paypal>
 ```
+
+### Usage
+```html
+<braintree-XXX options="controller.options"
+               token-options="controller.tokenOptions"
+               bt-token="controller.token">
+</braintree-XXX>
+```
+
+| Parameter | Description     |
+| :------------- | :------------- |
+| options       | An object passed to braintree setup as described [here](https://developers.braintreepayments.com/javascript+node/guides/client-sdk#global-setup)     |
+| token-options       | An object passed as params to the clientTokenPath request       |
+| bt-token       | A Braintree token. If provided no request to clientTokenPath is done.        |
 
 ### Advanced
 

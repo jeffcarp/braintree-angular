@@ -1,0 +1,18 @@
+{
+    "strict": true,
+    "undef": true,
+    "unused": true,
+    "noempty": true,
+    "trailing": true,
+    "white": false,
+    "indent": 2,
+    "newcap": true,
+    "quotmark": "single",
+    "-W058": true,
+    "node": true,
+    "predef": [
+        "angular",
+        "require",
+        "window"
+    ]
+}
