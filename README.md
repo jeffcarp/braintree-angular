@@ -40,9 +40,11 @@ var yourApp = angular.module('yourApp', ['braintree-angular'])
 
 Client tokens are generated with your Braintree server library. Here are guides on how to [set up the server library](https://developers.braintreepayments.com/sdk/server/setup) and how to [generate a client token](https://developers.braintreepayments.com/sdk/overview/generate-client-token).
 
-## Currently supported integrations:
+---
 
-### Drop-in UI
+#### Currently supported integrations:
+
+## Drop-in UI
 
 ```html
 <form action="/buy-something" method="post">
@@ -69,7 +71,7 @@ angular.module('example', ['braintree-angular'])
 <braintree-paypal></braintree-paypal>
 ```
 
-### Advanced
+## Advanced Integration (tokenization)
 
 ```html
 <div ng-app="yourApp" ng-controller="yourCtrl">
