@@ -1,6 +1,5 @@
 var assert = require('assert');
 var braintreeFactory = require('../../lib/braintree-factory');
-var jsdom = require('../../../jsdom');
 
 // TODO: See if using a mocking library would help
 var fakeBraintreeWeb = {
