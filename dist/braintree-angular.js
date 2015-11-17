@@ -20,14 +20,15 @@ braingular.directive('braintreeDropin', function() {
   return {
     restrict: 'AEC',
     scope: {
-      options: '='
+      options: '=',
+      clientTokenQueryString: '='
     },
     template: '<div id="bt-dropin"></div>',
     controller: ['$scope', '$braintree', function($scope, $braintree) {
       var options = $scope.options || {};
+      var queryString = $scope.clientTokenQueryString || null;
       options.container = 'bt-dropin';
-
-      $braintree.setupDropin(options);
+      $braintree.setupDropin(options, queryString);
     }]
   }
 });
@@ -61,23 +62,13 @@ function braintreeFactory(braintree) {
       $braintree[key] = braintree[key];
     });
 
-    $braintree.getClientToken = function (params) {
-      var path = clientTokenPath;
-
-      if (params) {
-        // TODO: Use a library for this
-        path += '?';
-        path += Object.keys(params).map(function (key) {
-          var value = params[key];
-          return key + '=' + value
-        }).join('&');
-      }
-
+    $braintree.getClientToken = function (queryString) {
+      var path = queryString ? clientTokenPath+'?'+queryString : clientTokenPath;
       return $http.get(path);
     }
 
-    $braintree.setupDropin = function(options) {
-      $braintree.getClientToken()
+    $braintree.setupDropin = function(options, queryString) {
+      $braintree.getClientToken(queryString)
         .success(function(token) {
           braintree.setup(token, 'dropin', options);
         })
