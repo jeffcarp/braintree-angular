@@ -21,12 +21,12 @@ braingular.directive('braintreeDropin', function() {
     restrict: 'AEC',
     scope: {
       options: '=',
-      clientTokenQueryString: '='
+      customerId: '='
     },
     template: '<div id="bt-dropin"></div>',
     controller: ['$scope', '$braintree', function($scope, $braintree) {
       var options = $scope.options || {};
-      var queryString = $scope.clientTokenQueryString || null;
+      var queryString = $scope.customerId ? "customerId="+$scope.customerId : null;
       options.container = 'bt-dropin';
       $braintree.setupDropin(options, queryString);
     }]
@@ -62,18 +62,18 @@ function braintreeFactory(braintree) {
       $braintree[key] = braintree[key];
     });
 
-    $braintree.getClientToken = function (queryString) {
-      var path = queryString ? clientTokenPath+'?'+queryString : clientTokenPath;
+    $braintree.getClientToken = function (path) {
       return $http.get(path);
     }
 
     $braintree.setupDropin = function(options, queryString) {
-      $braintree.getClientToken(queryString)
+      var path = queryString ? clientTokenPath+'?'+queryString : clientTokenPath;
+      $braintree.getClientToken(path)
         .success(function(token) {
           braintree.setup(token, 'dropin', options);
         })
         .error(function(data, status) {
-          console.error('error fetching client token at '+clientTokenPath, data, status);
+          console.error('error fetching client token at '+path, data, status);
         });
     };
 
