@@ -21,13 +21,19 @@ braingular.directive('braintreeDropin', function() {
     restrict: 'AEC',
     scope: {
       options: '=',
-      customerId: '='
+      customerId: '=',
+      onReadyFlag: '='
     },
     template: '<div id="bt-dropin"></div>',
-    controller: ['$scope', '$braintree', function($scope, $braintree) {
+    controller: ['$scope', '$braintree','$timeout', function($scope, $braintree, $timeout) {
       var options = $scope.options || {};
       var queryString = $scope.customerId ? "customerId="+$scope.customerId : null;
       options.container = 'bt-dropin';
+      options.onReady = function(){
+        $timeout(function(){
+          $scope.onReadyFlag = true;
+        })
+      }
       $braintree.setupDropin(options, queryString);
     }]
   }
