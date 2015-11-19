@@ -28,6 +28,8 @@ braingular.directive('braintreeDropin', function() {
       var options = $scope.options || {};
       var queryString = $scope.customerId ? "customerId="+$scope.customerId : null;
       options.container = 'bt-dropin';
+      options.onPaymentMethodReceived = function (obj) {console.log("Braintree paymentMethodReceived:", obj)}
+      options.onReady = function(obj){console.log("Braintree ready:", obj)}
       $braintree.setupDropin(options, queryString);
     }]
   }
@@ -43,7 +45,6 @@ braingular.directive('braintreePaypal', function() {
     controller: function($scope, $braintree) {
       var options = $scope.options || {};
       options.container = 'bt-paypal';
-
       $braintree.setupPayPal(options);
     }
   }
