@@ -12,7 +12,7 @@
 
       <input
         ng-model="ctrl.creditCard.expirationDate"
-        placeholder="10/18"
+        placeholder="MMYYYY"
         />
 
       <input
@@ -47,8 +47,8 @@
             client.tokenizeCard({
               number: this.creditCard.number,
               expirationDate: this.creditCard.expirationDate, 
-              expirationMonth: '04',
-              expirationYear: '2016',
+              expirationMonth: ('0'+(new Date().getMonth()+1)).slice(-2),
+              expirationYear: new Date().getFullYear() + '',
               customerName: 'Jaganlal Thoppe', 
               billingAddress: {
                 firstName: "Jaganlal", 
