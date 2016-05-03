@@ -50,7 +50,7 @@ Client tokens are generated with your Braintree server library. Here are guides 
 <form action="/buy-something" method="post">
   <h1>Buy some things</h1>
 
-  <braintree-dropin></braintree-dropin>
+  <braintree-dropin options="braintreeOpt">></braintree-dropin>
 
   <input
     type="submit"
@@ -64,12 +64,16 @@ Client tokens are generated with your Braintree server library. Here are guides 
 angular.module('example', ['braintree-angular'])
   .constant('clientTokenPath', '/client-token');
 ```
+For DropIn options see here :
+(https://developers.braintreepayments.com/guides/drop-in/javascript/v2#options)
 
 ## PayPal Standalone Button
 
 ```html
-<braintree-paypal></braintree-paypal>
+<braintree-paypal options="braintreeOpt"></braintree-paypal>
 ```
+For PayPal options see here :
+(https://developers.braintreepayments.com/reference/client-reference/javascript/v2/paypal#options)
 
 ## Advanced Integration (tokenization)
 
