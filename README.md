@@ -4,6 +4,10 @@ braintree-angular
 [![Build Status](http://img.shields.io/travis/jeffcarp/braintree-angular.svg?style=flat)](https://travis-ci.org/jeffcarp/braintree-angular)
 [![npm version](http://img.shields.io/npm/v/braintree-angular.svg?style=flat)](https://www.npmjs.org/package/braintree-angular)
 
+| Drop-In | Hosted Fields | Advanced |
+| --- | --- | --- |
+| mobile screenshot | mobile screenshot | mobile screenshot |
+
 
 A module for using [braintree-web](https://github.com/braintree/braintree-web) in your Angular app.
 
