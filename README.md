@@ -59,6 +59,7 @@ Client tokens are generated with your Braintree server library. Here are guides 
 
 </form>
 ```
+If you are using Braintree subscriptions you may need to pass a customerId to your server when creating a client token. You can add the customerId as a parameter to  braintree-dropin like this: `<braintree-dropin customer-id='yourCustomerId'></braintree-dropin>`. A query string will be appended to the url defined in the clientTokenPath constant like this: `/client-token?customerId=yourCustomerId`.
 
 ```javascript
 angular.module('example', ['braintree-angular'])
