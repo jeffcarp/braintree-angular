@@ -4,6 +4,7 @@
   "description": "Use Braintree in your Angular app",
   "main": "index.js",
   "scripts": {
+    "pretest": "standard",
     "test": "npm run build && mocha test/integration test/unit",
     "build": "browserify index.js > dist/braintree-angular.js",
     "example": "node examples/server"
@@ -33,6 +34,21 @@
     "express": "^4.10.4",
     "mocha": "^2.0.1",
     "phantom": "^0.7.1",
-    "phantomjs": "^1.9.12"
+    "phantomjs": "^1.9.12",
+    "standard": "^7.1.0"
+  },
+  "standard": {
+    "ignore": [
+      "/dist/"
+    ],
+    "globals": [
+      "before",
+      "beforeEach",
+      "after",
+      "afterEach",
+      "it",
+      "describe",
+      "context"
+    ]
   }
 }

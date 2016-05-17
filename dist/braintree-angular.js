@@ -1,106 +1,106 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-'use strict';
+'use strict'
 
-module.exports = require('./lib/braintree-angular');
+module.exports = require('./lib/braintree-angular')
 
 },{"./lib/braintree-angular":2}],2:[function(require,module,exports){
 // Everything that's not easily unit testable goes in this file
 
-var braintreeWeb = require('braintree-web');
-var braintreeFactory = require('./braintree-factory');
-var braingular = window.angular.module('braintree-angular', []);
+var braintreeWeb = require('braintree-web')
+var braintreeFactory = require('./braintree-factory')
+var braingular = window.angular.module('braintree-angular', [])
 
 braingular.factory('$braintree', [
   'clientTokenPath',
   '$http',
   braintreeFactory(braintreeWeb)
-]);
+])
 
-braingular.directive('braintreeDropin', function() {
+braingular.directive('braintreeDropin', function () {
   return {
     restrict: 'AEC',
     scope: {
       options: '='
     },
     template: '<div id="bt-dropin"></div>',
-    controller: ['$scope', '$braintree', function($scope, $braintree) {
-      var options = $scope.options || {};
-      options.container = 'bt-dropin';
+    controller: ['$scope', '$braintree', function ($scope, $braintree) {
+      var options = $scope.options || {}
+      options.container = 'bt-dropin'
 
-      $braintree.setupDropin(options);
+      $braintree.setupDropin(options)
     }]
   }
-});
+})
 
-braingular.directive('braintreePaypal', function() {
+braingular.directive('braintreePaypal', function () {
   return {
     restrict: 'AEC',
     scope: {
       options: '='
     },
     template: '<div id="bt-paypal"></div>',
-    controller: function($scope, $braintree) {
-      var options = $scope.options || {};
-      options.container = 'bt-paypal';
+    controller: function ($scope, $braintree) {
+      var options = $scope.options || {}
+      options.container = 'bt-paypal'
 
-      $braintree.setupPayPal(options);
+      $braintree.setupPayPal(options)
     }
   }
-});
+})
 
-module.exports = braingular;
+module.exports = braingular
 
 },{"./braintree-factory":3,"braintree-web":4}],3:[function(require,module,exports){
-function braintreeFactory(braintree) {
-  return function braintreeAngular(clientTokenPath, $http) {
-    var $braintree = {};
+function braintreeFactory (braintree) {
+  return function braintreeAngular (clientTokenPath, $http) {
+    var $braintree = {}
 
-    $braintree.clientToken = null;
+    $braintree.clientToken = null
 
-    Object.keys(braintree).forEach(function(key) {
-      $braintree[key] = braintree[key];
-    });
+    Object.keys(braintree).forEach(function (key) {
+      $braintree[key] = braintree[key]
+    })
 
     $braintree.getClientToken = function (params) {
-      var path = clientTokenPath;
+      var path = clientTokenPath
 
       if (params) {
         // TODO: Use a library for this
-        path += '?';
+        path += '?'
         path += Object.keys(params).map(function (key) {
-          var value = params[key];
+          var value = params[key]
           return key + '=' + value
-        }).join('&');
+        }).join('&')
       }
 
-      return $http.get(path);
+      return $http.get(path)
     }
 
-    $braintree.setupDropin = function(options) {
+    $braintree.setupDropin = function (options) {
       $braintree.getClientToken()
-        .success(function(token) {
-          braintree.setup(token, 'dropin', options);
+        .success(function (token) {
+          braintree.setup(token, 'dropin', options)
         })
-        .error(function(data, status) {
-          console.error('error fetching client token at '+clientTokenPath, data, status);
-        });
-    };
+        .error(function (data, status) {
+          console.error('error fetching client token at ' + clientTokenPath, data, status)
+        })
+    }
 
-    $braintree.setupPayPal = function(options) {
+    $braintree.setupPayPal = function (options) {
       $braintree.getClientToken()
-        .success(function(token) {
-          braintree.setup(token, 'paypal', options);
+        .success(function (token) {
+          braintree.setup(token, 'paypal', options)
         })
-        .error(function(data, status) {
-          console.error('error fetching client token at '+clientTokenPath, data, status);
-        });
-    };
+        .error(function (data, status) {
+          console.error('error fetching client token at ' + clientTokenPath, data, status)
+        })
+    }
 
-    return $braintree;
+    return $braintree
   }
 }
 
-module.exports = braintreeFactory;
+module.exports = braintreeFactory
 
 },{}],4:[function(require,module,exports){
 (function (global){
