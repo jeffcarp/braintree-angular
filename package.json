@@ -33,8 +33,7 @@
     "browserify": "^7.0.0",
     "express": "^4.10.4",
     "mocha": "^2.0.1",
-    "phantom": "^0.7.1",
-    "phantomjs": "^1.9.12",
+    "phantom": "^2.1.2",
     "standard": "^7.1.0"
   },
   "standard": {

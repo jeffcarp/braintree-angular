@@ -1,44 +1,55 @@
-var phantom = require('phantom')
-var assert = require('assert')
-var app = require('../support/app')
+'use strict'
+const phantom = require('phantom')
+const assert = require('assert')
+const app = require('../support/app')
 
-var baseURL = 'http://localhost:3001'
+const baseURL = 'http://localhost:3001'
 
 describe('Drop-in Integration', function () {
-  var ph
-  var server
   this.timeout(1e4)
 
-  before(function (done) {
-    phantom.create(function (phInstance) {
-      ph = phInstance
-      server = app.listen(3001, function () {
-        done()
-      })
-    })
-  })
-
-  it('adds elements to the page on setup', function (done) {
-    ph.createPage(function (page) {
-      page.onConsoleMessage(function (msg) {
-        console.log('page console -> ', msg)
-      })
-
-      page.open(baseURL + '/test-dropin.html', function (status) {
-        page.evaluate(function () { return document.documentElement.innerHTML }, function (result) {
-          assert(result.indexOf('iframe') !== -1, 'adds an iframe to the page')
-          var input = '<input type="hidden" name="payment_method_nonce"'
-          assert(result.indexOf(input) !== -1, 'adds nonce input')
-
-          done()
+  it('adds elements to the page on setup', (done) => {
+    let sitepage = null
+    let phInstance = null
+    let server = app.listen(3001, () => {
+      phantom.create()
+        .then(instance => {
+          phInstance = instance
+          return instance.createPage()
         })
-      })
-    })
-  })
+        .then(page => {
+          sitepage = page
+          return page.open(baseURL + '/test-dropin.html')
+        })
+        .then(status => {
+          return new Promise((resolve, reject) => {
+            const interval = setInterval(() => {
+              sitepage.evaluate(function () {
+                return document.querySelector('input[name="payment_method_nonce"]')
+              }).then((html) => {
+                if (html) {
+                  resolve()
+                }
+              })
+            }, 100)
 
-  after(function (done) {
-    ph.exit()
-    server.close()
-    done()
+            setTimeout(() => {
+              clearInterval(interval)
+              reject()
+            }, 5e3)
+          })
+        })
+        .then(content => {
+          sitepage.close()
+          phInstance.exit()
+          server.close(done)
+        })
+        .catch(error => {
+          console.log(error)
+          assert.fail()
+          phInstance.exit()
+          server.close(done)
+        })
+    })
   })
 })

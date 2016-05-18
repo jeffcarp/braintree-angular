@@ -1,42 +1,43 @@
-var phantom = require('phantom')
-var assert = require('assert')
-var app = require('../support/app')
+'use strict'
+const phantom = require('phantom')
+const assert = require('assert')
+const app = require('../support/app')
 
-var baseURL = 'http://localhost:3001'
+const baseURL = 'http://localhost:3001'
 
 describe('Advanced Integration', function () {
-  var ph
-  var server
-  this.timeout(1e4)
-
-  before(function (done) {
-    phantom.create(function (phInstance) {
-      ph = phInstance
-      server = app.listen(3001, function () {
-        done()
-      })
-    })
-  })
-
-  it('initializes API client', function (done) {
-    ph.createPage(function (page) {
-      page.onConsoleMessage(function (msg) {
-        console.log('page console -> ', msg)
-      })
-
-      page.open(baseURL + '/test-advanced.html', function (status) {
-        page.evaluate(function () { return window.braintreeApiInitialized }, function (result) {
-          assert(result, 'Braintree API client was initialized')
-
-          done()
+  it('adds elements to the page on setup', (done) => {
+    let sitepage = null
+    let phInstance = null
+    let server = app.listen(3001, () => {
+      phantom.create()
+        .then(instance => {
+          phInstance = instance
+          return instance.createPage()
         })
-      })
+        .then(page => {
+          sitepage = page
+          return page.open(baseURL + '/test-advanced.html')
+        })
+        .then(status => {
+          return sitepage.evaluate(function () {
+            return window.braintreeApiInitialized
+          })
+        })
+        .then(result => {
+          assert(result, 'Braintree API client was initialized')
+        })
+        .then(() => {
+          sitepage.close()
+          phInstance.exit()
+          server.close(done)
+        })
+        .catch(error => {
+          console.log(error)
+          assert.fail()
+          phInstance.exit()
+          server.close(done)
+        })
     })
-  })
-
-  after(function (done) {
-    ph.exit()
-    server.close()
-    done()
   })
 })
