@@ -18,13 +18,15 @@ braingular.factory('$braintree', [
 braingular.component('braintreeDropin', {
   template: '<div class="braintree-dropin"></div>',
   bindings: {
-    tokenizationKey: '@'
+    tokenizationKey: '@',
+    onPaymentMethodReceived: '&'
   },
   controller: function ($element) {
-
     var instance
 
     this.$onInit = function () {
+      var self = this
+
       if (!this.tokenizationKey) {
         console.error('requires tokenizationKey')
         return
@@ -34,6 +36,11 @@ braingular.component('braintreeDropin', {
         container: $element[0],
         onReady: function (integration) {
           instance = integration
+        },
+        onPaymentMethodReceived: function (payload) {
+          if (self.onPaymentMethodReceived) {
+            self.onPaymentMethodReceived(payload)
+          }
         }
       })
     }

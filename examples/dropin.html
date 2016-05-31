@@ -6,10 +6,11 @@
 
     <div ng-app="example">
 
-      <form action="/buy-something" method="post">
+      <form method="post" ng-controller="checkout">
         <h1>Buy some things</h1>
         <braintree-dropin
-          tokenization-key="sandbox_fms42993_8t9kz9kbkcfh6nv5">
+          tokenization-key="sandbox_fms42993_8t9kz9kbkcfh6nv5"
+          on-payment-method-received="onPaymentMethodReceived">
           Loading payment form...
         </braintree-dropin>
 
@@ -24,7 +25,13 @@
     <script src="/angular.js"></script>
     <script src="/braintree-angular.js"></script>
     <script>
-      angular.module('example', ['braintree-angular'])
+      angular
+        .module('example', ['braintree-angular'])
+         .controller('checkout', function($scope) {
+           $scope.onPaymentMethodReceived = function (payload) {
+             console.log(payload)
+           }
+         })
     </script>
   </body>
 </html>
