@@ -8,7 +8,10 @@
 
       <form action="/buy-something" method="post">
         <h1>Buy some things</h1>
-        <braintree-dropin>Loading payment form...</braintree-dropin>
+        <braintree-dropin
+          tokenization-key="sandbox_fms42993_8t9kz9kbkcfh6nv5">
+          Loading payment form...
+        </braintree-dropin>
 
         <input
           type="submit"
@@ -22,7 +25,6 @@
     <script src="/braintree-angular.js"></script>
     <script>
       angular.module('example', ['braintree-angular'])
-             .constant('clientTokenPath', '/client-token');
     </script>
   </body>
 </html>

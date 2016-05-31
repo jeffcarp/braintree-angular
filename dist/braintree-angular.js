@@ -11,11 +11,20 @@ var braintreeFactory = require('./braintree-factory')
 var braingular = window.angular.module('braintree-angular', [])
 
 braingular.factory('$braintree', [
-  'clientTokenPath',
   '$http',
   braintreeFactory(braintreeWeb)
 ])
 
+braingular.component('braintreeDropin', {
+  template: '<div class="braintree-dropin"></div>',
+  bindings: {
+    tokenizationKey: '@'
+  },
+  controller: function () {
+    console.log('yas', this)
+  }
+})
+/*
 braingular.directive('braintreeDropin', function () {
   return {
     restrict: 'AEC',
@@ -31,6 +40,7 @@ braingular.directive('braintreeDropin', function () {
     }]
   }
 })
+*/
 
 braingular.directive('braintreePaypal', function () {
   return {
@@ -52,7 +62,7 @@ module.exports = braingular
 
 },{"./braintree-factory":3,"braintree-web":4}],3:[function(require,module,exports){
 function braintreeFactory (braintree) {
-  return function braintreeAngular (clientTokenPath, $http) {
+  return function braintreeAngular ($http) {
     var $braintree = {}
 
     $braintree.clientToken = null
@@ -62,7 +72,9 @@ function braintreeFactory (braintree) {
     })
 
     $braintree.getClientToken = function (params) {
-      var path = clientTokenPath
+      //var path = clientTokenPath
+      // TODO: fix
+      var path = ''
 
       if (params) {
         // TODO: Use a library for this

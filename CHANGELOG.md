@@ -2,6 +2,7 @@ For changes to `braintree-web`, please see [braintree-web/CHANGELOG.md](https://
 
 # `1.4.1`
 
+- Breaking change: move to using angular.component (requires 1.5(?))
 - Properly use dependency injection syntax for `braintree-paypal` directive (jlforever) #48
 
 # `1.4.0`
