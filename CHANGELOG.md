@@ -1,6 +1,6 @@
 For changes to `braintree-web`, please see [braintree-web/CHANGELOG.md](https://github.com/braintree/braintree-web/blob/master/CHANGELOG.md).
 
-# Unreleased
+# `1.4.1`
 
 - Properly use dependency injection syntax for `braintree-paypal` directive (jlforever) #48
 
