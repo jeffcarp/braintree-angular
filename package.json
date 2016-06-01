@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "pretest": "standard",
-    "test": "npm run build && mocha test/integration test/unit",
+    "test": "npm run build && mocha test",
     "build": "browserify index.js > dist/braintree-angular.js",
     "example": "node examples/server"
   },
