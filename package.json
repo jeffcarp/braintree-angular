@@ -1,7 +1,7 @@
 {
-  "name": "braintree-angular",
-  "version": "1.4.0",
-  "description": "Use Braintree in your Angular app",
+  "name": "braintree-angular-alpine",
+  "version": "1.0.0",
+  "description": "Use Braintree in your Angular app; forked to allow custom integeration to set client token",
   "main": "index.js",
   "scripts": {
     "pretest": "standard",
