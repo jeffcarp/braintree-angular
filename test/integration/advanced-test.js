@@ -5,7 +5,7 @@ const app = require('../support/app')
 
 const baseURL = 'http://localhost:3001'
 
-describe('Advanced Integration', function () {
+describe.skip('Advanced Integration', function () {
   it('adds elements to the page on setup', (done) => {
     let sitepage = null
     let phInstance = null

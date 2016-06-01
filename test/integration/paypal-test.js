@@ -5,7 +5,7 @@ const app = require('../support/app')
 
 const baseURL = 'http://localhost:3001'
 
-describe('PayPal Integration', function () {
+describe.skip('PayPal Integration', function () {
   this.timeout(1e4)
 
   it('adds elements to the page on setup', (done) => {
