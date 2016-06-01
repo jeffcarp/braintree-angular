@@ -27,11 +27,11 @@
     <script>
       angular
         .module('example', ['braintree-angular'])
-         .controller('checkout', function($scope) {
-           $scope.onPaymentMethodReceived = function (payload) {
-             console.log(payload)
-           }
-         })
+        .controller('checkout', function($scope) {
+          $scope.onPaymentMethodReceived = function (payload) {
+            console.log(payload)
+          }
+        })
     </script>
   </body>
 </html>
