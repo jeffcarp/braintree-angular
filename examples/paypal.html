@@ -2,14 +2,18 @@
   <head>
   </head>
   <body>
-    <h1>PayPal Standalone Example</h1>
+    <h1>PayPal Example</h1>
 
     <div ng-app="example">
 
-      <form>
+      <form action="" method="post" ng-controller="checkout">
         <h1>Buy some things</h1>
 
-        <braintree-paypal>Loading PayPal button...</braintree-paypal>
+        <braintree-paypal
+          tokenization-key="sandbox_fms42993_8t9kz9kbkcfh6nv5"
+          on-payment-method-received="onPaymentMethodReceived">
+          Loading payment form...
+        </braintree-paypal>
 
         <input
           type="submit"
@@ -19,13 +23,16 @@
 
     </div>
 
-    <script src="/angular.js"></script>
-    <script src="/braintree-angular.js"></script>
+    <script src="/node_modules/angular/angular.js"></script>
+    <script src="/dist/braintree-angular.js"></script>
     <script>
-
-    angular.module('example', ['braintree-angular'])
-           .constant('clientTokenPath', '/client-token');
-
+      angular
+        .module('example', ['braintree-angular'])
+        .controller('checkout', function($scope) {
+          $scope.onPaymentMethodReceived = function (payload) {
+            console.log(payload)
+          }
+        })
     </script>
   </body>
 </html>

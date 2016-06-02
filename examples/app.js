@@ -1,16 +1,7 @@
-var express = require('express')
-var fs = require('fs')
-var path = require('path')
-var app = express()
+const express = require('express')
+const path = require('path')
+const app = express()
 
-app.use(express.static(__dirname))
-
-app.get('/braintree-angular.js', function (req, res) {
-  res.send(fs.readFileSync(path.resolve(__dirname, '../dist/braintree-angular.js'), 'utf8'))
-})
-
-app.get('/angular.js', function (req, res) {
-  res.send(fs.readFileSync(path.resolve(__dirname, '../node_modules/angular/angular.js'), 'utf8'))
-})
+app.use(express.static(path.resolve('..', __dirname)))
 
 module.exports = app

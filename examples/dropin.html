@@ -8,6 +8,7 @@
 
       <form method="post" ng-controller="checkout">
         <h1>Buy some things</h1>
+
         <braintree-dropin
           tokenization-key="sandbox_fms42993_8t9kz9kbkcfh6nv5"
           on-payment-method-received="onPaymentMethodReceived">
@@ -22,8 +23,8 @@
 
     </div>
 
-    <script src="/angular.js"></script>
-    <script src="/braintree-angular.js"></script>
+    <script src="/node_modules/angular/angular.js"></script>
+    <script src="/dist/braintree-angular.js"></script>
     <script>
       angular
         .module('example', ['braintree-angular'])
