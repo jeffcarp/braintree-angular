@@ -3,8 +3,9 @@ For changes to `braintree-web`, please see [braintree-web/CHANGELOG.md](https://
 # `1.4.1`
 
 - Breaking changes in version 2!
-  - Move to using `angular.component` (requires 1.5(?))
+  - Move to using `angular.component` - requires Angular 1.5
   - Now uses braintree-web v3(?)
+  - Removes functionality to fetch client tokens, you must now pass in a client token or a tokenization key as a property
 - Properly use dependency injection syntax for `braintree-paypal` directive (jlforever) #48
 
 # `1.4.0`
