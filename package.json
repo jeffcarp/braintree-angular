@@ -4,9 +4,9 @@
   "description": "Use Braintree in your Angular app",
   "main": "index.js",
   "scripts": {
-    "pretest": "standard",
-    "test": "npm run build && mocha test",
-    "build": "browserify index.js > dist/braintree-angular.js",
+    "pretest": "standard && npm run build",
+    "test": "jest && mocha test/examples",
+    "build": "browserify index.js > braintree-angular.js",
     "example": "http-server"
   },
   "repository": {
@@ -28,11 +28,13 @@
   },
   "devDependencies": {
     "angular": "^1.5.6",
+    "angular-mocks": "^1.5.6",
     "body-parser": "^1.9.3",
     "braintree": "^1.21.0",
     "browserify": "^7.0.0",
     "express": "^4.10.4",
     "http-server": "^0.9.0",
+    "jsdom": "^9.2.1",
     "mocha": "^2.0.1",
     "phantom": "^2.1.2",
     "standard": "^7.1.0"
@@ -48,7 +50,21 @@
       "afterEach",
       "it",
       "describe",
-      "context"
+      "context",
+      "jest",
+      "angular",
+      "expect",
+      "ngModule",
+      "inject"
+    ]
+  },
+  "jest": {
+    "testDirectoryName": "test/unit",
+    "unmockedModulePathPatterns": [
+      "<rootDir>/node_modules/angular"
+    ],
+    "modulePathIgnorePatterns": [
+      "<rootDir>/node_modules/"
     ]
   }
 }
