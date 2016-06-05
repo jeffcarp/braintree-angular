@@ -8,7 +8,7 @@ Note! As of version **2.0** Angular 1.5 is required and bower is no longer suppo
 
 Version 2.0 todo:
 
-- [ ] Support client tokens
+- [x] Support client tokens
 - [ ] Support more props (see braintree-react)
 - [x] Determine if hard requirement for 1.5 is ok
 
