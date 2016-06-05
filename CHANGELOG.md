@@ -5,6 +5,7 @@ For changes to `braintree-web`, please see [braintree-web/CHANGELOG.md](https://
 - Breaking changes in version 2!
   - Move to using `angular.component` - requires Angular 1.5
   - Now uses braintree-web v3(?)
+  - No longer includes a built version in the `dist` directory
   - Removes functionality to fetch client tokens, you must now pass in a client token or a tokenization key as a property
 
 # `1.4.1`
