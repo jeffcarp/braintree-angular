@@ -18,10 +18,6 @@ Version 2.0 todo:
 npm install braintree-angular
 ```
 
-```bash
-bower install braintree-angular
-```
-
 ## Run the example
 
 ```sh
