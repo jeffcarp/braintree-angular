@@ -1,7 +1,7 @@
 'use strict'
 const createServer = require('http-server').createServer
 
-let server = createServer({
+const server = createServer({
   root: ''
 })
 
