@@ -2,9 +2,13 @@
 
 A module for using [braintree-web](https://github.com/braintree/braintree-web) in your Angular app.
 
-Note! As of version **2.0** Angular 1.5 is required and bower is no longer supported.
-
 > Disclaimer: `braintree-angular` is not an official Braintree module.
+
+**Big changes in version 2.0:**
+
+- Angular 1.5 is required
+- Bower is no longer supported
+- You now must supply your own client token or tokenization key
 
 Version 2.0 todo:
 
