@@ -13,9 +13,10 @@ A module for using [braintree-web](https://github.com/braintree/braintree-web) i
 Version 2.0 todo:
 
 - [x] Support client tokens
-- [ ] Support more props (see braintree-react)
 - [x] Determine if hard requirement for 1.5 is ok
+- [ ] Support more props (see braintree-react)
 - [ ] Update README
+- [ ] Put examples in gh-pages so we can link from README?
 
 ## Install
 
@@ -23,20 +24,11 @@ Version 2.0 todo:
 npm install braintree-angular
 ```
 
-## Run the example
-
-```sh
-git clone git@github.com:jeffcarp/braintree-angular.git
-cd braintree-angular
-npm install
-npm run example
-# Open localhost:8000/dropin.html
-```
-
 ## Setup
 
 ```javascript
-require('braintree-angular');
+// this should work....
+require('braintree-angular')
 var yourApp = angular.module('yourApp', ['braintree-angular'])
 ```
 
@@ -45,10 +37,8 @@ var yourApp = angular.module('yourApp', ['braintree-angular'])
 ### Drop-in UI
 
 ```html
-<form action="/buy-something" method="post">
-  <h1>Buy some things</h1>
-
-  <braintree-dropin tokenization-key=""></braintree-dropin>
+<form action="/purchase" method="post">
+  <braintree-dropin tokenization-key="your-tokenization-key"></braintree-dropin>
 
   <input type="submit" value="Buy for $14" />
 </form>
