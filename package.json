@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/jeffcarp/braintree-angular",
   "dependencies": {
-    "braintree-web": "2.25.0"
+    "braintree-web": "2.26.0"
   },
   "devDependencies": {
     "angular": "^1.3.3",
