@@ -10,9 +10,8 @@ A module for using [braintree-web](https://github.com/braintree/braintree-web) i
 npm install braintree-angular
 ```
 
-```bash
-bower install braintree-angular
-```
+As of [version 2.0.0](https://github.com/jeffcarp/braintree-angular/releases/tag/2.0.0), Bower is no longer supported.
+
 
 ## Run the example
 
