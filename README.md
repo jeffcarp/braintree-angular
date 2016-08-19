@@ -39,8 +39,8 @@ Client tokens are generated with your Braintree server library. Here are guides 
 #### Currently supported integrations:
 
 ## Drop-in UI
-The Braintree drop-in directive can accept an attribute named options which in turn accepts any option available to the drop-in UI on the [Braintree website](https://developers.braintreepayments.com/guides/drop-in/javascript/v2#callbacks)  
-Note: the container option gets overwritten.
+
+The Braintree Drop-In directive accepts an `options` attribute which in turn accepts any options available in the [Braintree JS SDK docs](https://developers.braintreepayments.com/guides/drop-in/javascript/v2#callbacks) (except `container`).
 
 ```html
 <form action="/buy-something" method="post">
