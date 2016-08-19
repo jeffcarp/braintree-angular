@@ -37,6 +37,9 @@
     "standard": "^7.1.0"
   },
   "standard": {
+    "ignore": [
+      "*.dist.js"
+    ],
     "globals": [
       "before",
       "beforeEach",
