@@ -6,7 +6,7 @@
   "scripts": {
     "pretest": "standard",
     "test": "npm run build && mocha test/integration test/unit",
-    "build": "browserify index.js > dist/braintree-angular.js",
+    "build": "browserify index.js > braintree-angular.dist.js",
     "example": "node examples/server"
   },
   "repository": {
@@ -37,9 +37,6 @@
     "standard": "^7.1.0"
   },
   "standard": {
-    "ignore": [
-      "/dist/"
-    ],
     "globals": [
       "before",
       "beforeEach",

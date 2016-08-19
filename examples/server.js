@@ -14,7 +14,7 @@ var gateway = braintree.connect({
 })
 
 var angularStr = fs.readFileSync(path.resolve(__dirname, '../node_modules/angular/angular.js'), 'utf8')
-var braintreeAngularStr = fs.readFileSync(path.resolve(__dirname, '../dist/braintree-angular.js'), 'utf8')
+var braintreeAngularStr = fs.readFileSync(path.resolve(__dirname, '../braintree-angular.dist.js'), 'utf8')
 
 app.use(bodyParser.urlencoded({
   extended: true

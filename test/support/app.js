@@ -7,7 +7,7 @@ var clientToken = require('../../client-token')
 app.use(express.static(__dirname))
 
 app.get('/braintree-angular.js', function (req, res) {
-  res.send(fs.readFileSync(path.resolve(__dirname, '../../dist/braintree-angular.js'), 'utf8'))
+  res.send(fs.readFileSync(path.resolve(__dirname, '../../braintree-angular.dist.js'), 'utf8'))
 })
 
 app.get('/angular.js', function (req, res) {
