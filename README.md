@@ -1,5 +1,7 @@
 # braintree-angular [![Build Status](https://travis-ci.org/jeffcarp/braintree-angular.svg?branch=master)](https://travis-ci.org/jeffcarp/braintree-angular) [![npm version](http://img.shields.io/npm/v/braintree-angular.svg?style=flat)](https://www.npmjs.org/package/braintree-angular) [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
 
+> :rotating_light: Warning! This module is based on braintree-web v2. Now that v3 is out, please consider [using it instead](https://developers.braintreepayments.com/guides/client-sdk/setup/javascript/v3).
+
 A module for using [braintree-web](https://github.com/braintree/braintree-web) in your Angular app.
 
 > Disclaimer: `braintree-angular` is not an official Braintree module.
